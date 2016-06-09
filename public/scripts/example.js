@@ -32,16 +32,6 @@ var CommentList = React.createClass({
   }
 });
 
-var CommentForm = React.createClass({
-  render: function() {
-    return (
-      <div className="commentForm">
-        Hello, world! I am a CommentForm.
-      </div>
-    );
-  }
-});
-
 var Comment = React.createClass({
   rawMarkup: function() {
     var md = new Remarkable();
@@ -55,6 +45,16 @@ var Comment = React.createClass({
           {this.props.author}
         </h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
+      </div>
+    );
+  }
+});
+
+var CommentForm = React.createClass({
+  render: function() {
+    return (
+      <div className="commentForm">
+        Hello, world! I am a CommentForm.
       </div>
     );
   }
