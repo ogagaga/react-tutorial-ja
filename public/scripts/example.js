@@ -5,6 +5,7 @@ var CommentBox = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
+        this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString() );
@@ -77,6 +78,6 @@ var CommentForm = React.createClass({
 // ルートコンポーネントのインスタンスを作成するので
 // 最後の行に書く
 ReactDOM.render(
-    <CommentBox url="comments.json" pollInterval={2000} />,
+  <CommentBox url="/api/comments" pollInterval={2000} />,
   document.getElementById('content')
 );
