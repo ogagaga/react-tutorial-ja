@@ -12,6 +12,9 @@ var CommentBox = React.createClass({
       }.bind(this)
     });
   },
+  handleCommentSubmit: function(comment) {
+    // TODO: submit to the server and refresh the list
+  },
   getInitialState: function() {
     return {data: []};
   },
@@ -24,7 +27,7 @@ var CommentBox = React.createClass({
       <div className="commentBox">
         <h1>Comments</h1>
         <CommentList data={this.state.data} />
-        <CommentForm />
+        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>
     );
   }
@@ -82,7 +85,7 @@ var CommentForm = React.createClass({
     if (!text || !author) {
       return;
     }
-    // TODO: サーバにリクエストを送信
+    this.props.onCommentSubmit({author: author, text: text});
     this.setState({author: '', text: ''});
     return;
   },
